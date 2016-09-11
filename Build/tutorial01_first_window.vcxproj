@@ -372,6 +372,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="..\Code\tutorial01_first_window\ThirdsEngine.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Time.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -388,8 +390,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClInclude Include="Core.h" />
     <ClInclude Include="Disposable.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>

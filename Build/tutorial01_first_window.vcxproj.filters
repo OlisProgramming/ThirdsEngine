@@ -14,6 +14,8 @@
     </ClCompile>
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Game.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -21,6 +23,8 @@
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="Core.h" />
     <ClInclude Include="Disposable.h" />
+    <ClInclude Include="Time.h" />
+    <ClInclude Include="Game.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ThirdsEngine.rc" />

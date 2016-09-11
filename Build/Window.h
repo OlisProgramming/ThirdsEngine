@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Renderable.h"
-
 class Window
 {
 public:
@@ -18,4 +16,6 @@ public:
 	static void setWidth(int width);
 	static void setHeight(int height);
 	static void setTitle(char* title);
+
+	static void dispose();
 };

@@ -107,3 +107,9 @@ void Window::setTitle(char* title)
 {
 	glfwSetWindowTitle(glfwWindow, title);
 }
+
+void Window::dispose()
+{
+	// Close OpenGL window and terminate GLFW
+	glfwTerminate();
+}

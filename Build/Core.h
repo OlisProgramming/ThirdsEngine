@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Game.h"
 #include "Renderable.h"
 #include "Disposable.h"
 
@@ -10,10 +11,12 @@ public:
 	~Core();
 
 	void start();
+	void stop();
+
+private:
+	Game game;
 
 	void update();
 	void render();
-
-	void stop();
 	void dispose();
 };
