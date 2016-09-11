@@ -10,6 +10,8 @@
 // Include GLFW
 #include <glfw3.h>
 
+#include "RenderUtil.h"
+
 extern GLFWwindow* glfwWindow;
 
 bool Window::createWindow(int width, int height, char* title)
@@ -58,8 +60,7 @@ bool Window::createWindow(int width, int height, char* title)
 
 void Window::render()
 {
-	// Clear the screen. It's not mentioned before Tutorial 02, but it can cause flickering, so it's there nonetheless.
-	glClear(GL_COLOR_BUFFER_BIT);
+	RenderUtil::cls();
 
 	// Drawing start
 

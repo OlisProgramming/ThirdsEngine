@@ -10,6 +10,7 @@
 // Include GLFW
 #include <glfw3.h>
 
+#include "RenderUtil.h"
 #include "Window.h"
 #include "Input.h"
 #include "Time.h"
@@ -47,8 +48,7 @@ void Core::start()
 		return;
 	}
 
-	// Set colour to clear screen with
-	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+	RenderUtil::initGraphics();
 
 	do {
 		bool shouldRender = false;

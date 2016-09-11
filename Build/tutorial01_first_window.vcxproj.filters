@@ -18,6 +18,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Util.cpp" />
+    <ClCompile Include="RenderUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -29,6 +30,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Util.h" />
+    <ClInclude Include="RenderUtil.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ThirdsEngine.rc" />

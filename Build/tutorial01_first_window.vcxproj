@@ -374,6 +374,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -395,6 +396,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Renderable.h" />
+    <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Util.h" />
