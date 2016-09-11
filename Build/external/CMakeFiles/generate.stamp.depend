@@ -1,0 +1,7 @@
+# CMake generation dependency list for this directory.
+S:/C++/ThirdsEngine/Code/external/CMakeLists.txt
+S:/CMake/share/cmake-3.6/Modules/CheckIncludeFile.cmake
+S:/CMake/share/cmake-3.6/Modules/CheckTypeSize.cmake
+S:/CMake/share/cmake-3.6/Modules/CheckIncludeFile.cmake
+S:/CMake/share/cmake-3.6/Modules/CheckIncludeFileCXX.cmake
+S:/CMake/share/cmake-3.6/Modules/CheckFunctionExists.cmake
