@@ -80,12 +80,18 @@ bool Window::isCloseRequested()
 
 int Window::getWidth()
 {
-	return glfwGetVideoMode(glfwGetPrimaryMonitor())->width;
+	int width = 0;
+	int height = 0;
+	glfwGetWindowSize(glfwWindow, &width, &height);
+	return width;
 }
 
 int Window::getHeight()
 {
-	return glfwGetVideoMode(glfwGetPrimaryMonitor())->height;
+	int width = 0;
+	int height = 0;
+	glfwGetWindowSize(glfwWindow, &width, &height);
+	return height;
 }
 
 void Window::setSize(int width, int height)

@@ -11,13 +11,14 @@
 #include <glfw3.h>
 
 #include "Window.h"
+#include "Input.h"
 #include "Time.h"
 
 bool isRunning;
 
 int SCREEN_WIDTH = 800;
 int SCREEN_HEIGHT = 600;
-int FRAME_CAP = 1000;
+int FRAME_CAP = 60;
 GLFWwindow* glfwWindow;
 
 Game game = Game();
@@ -66,11 +67,9 @@ void Core::start()
 
 			unprocessedTime -= frameTime;
 
-			if (Window::isCloseRequested())
-				stop();
-
 			// Update game
-
+			Time::setDelta(frameTime);
+			Input::update();
 			game.input();
 			game.update();
 
@@ -85,6 +84,9 @@ void Core::start()
 			render();
 			frames++;
 		}
+
+		if (Window::isCloseRequested())
+			stop();
 		
 	} while (isRunning);
 }
