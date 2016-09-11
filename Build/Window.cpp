@@ -36,9 +36,6 @@ bool Window::createWindow(int width, int height, char* title)
 		return false;
 	}
 
-	// Set title to static variable in-class for use in getTitle method
-	setTitle(title);
-
 	// Get desktop resolution
 	const GLFWvidmode* vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
 	// Centre window on screen
@@ -89,11 +86,6 @@ int Window::getWidth()
 int Window::getHeight()
 {
 	return glfwGetVideoMode(glfwGetPrimaryMonitor())->height;
-}
-
-char* Window::getTitle()
-{
-	return title;
 }
 
 void Window::setSize(int width, int height)

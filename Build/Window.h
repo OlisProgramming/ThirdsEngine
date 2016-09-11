@@ -13,13 +13,9 @@ public:
 	static bool isCloseRequested();
 	static int getWidth();
 	static int getHeight();
-	static char* getTitle();
 
 	static void setSize(int width, int height);
 	static void setWidth(int width);
 	static void setHeight(int height);
 	static void setTitle(char* title);
-
-private:
-	static char* title;
 };

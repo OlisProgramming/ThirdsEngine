@@ -13,11 +13,14 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Window.cpp" />
+    <ClCompile Include="Core.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="Renderable.h" />
+    <ClInclude Include="Core.h" />
+    <ClInclude Include="Disposable.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ThirdsEngine.rc" />
