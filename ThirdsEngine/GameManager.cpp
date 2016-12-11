@@ -4,13 +4,20 @@
 #include <GL/glew.h>
 
 namespace te {
+
+	GameManager* GameManager::manager = nullptr;
+
 	GameManager::GameManager() :
-		wnd(nullptr) {}
+		wnd(nullptr), running(true), eventHandler(new EventHandler) {}
 
 	GameManager::~GameManager() {
+		delete eventHandler;
+		delete wnd;
 	}
 
 	void GameManager::run() {
+
+		manager = this;
 
 		if (wnd == nullptr) {
 			fprintf(stderr, "GameManager::run\nWindow* wnd was not initialised with a call to GameManager::setWindow(Window* wnd).");
@@ -33,11 +40,38 @@ namespace te {
 
 		// BEGIN MAIN LOOP
 		
-		wnd->render();
+		while (running) {
+			
+			handleEvents();
+			
+			render();
+		}
 		
 		// END MAIN LOOP
+	}
 
-		delete wnd;
+	void GameManager::handleEvents() {
+		SDL_Event e;
+		while (SDL_PollEvent(&e) != 0) {
+
+			switch (e.type) {
+			case SDL_QUIT:
+				eventHandler->close();
+				break;
+			}
+		}
+	}
+
+	void GameManager::render() {
+		wnd->render();
+	}
+
+	void GameManager::update() {
+
+	}
+
+	void GameManager::requestClose() {
+		running = false;
 	}
 
 	void GameManager::setWindow(Window* wnd) {
