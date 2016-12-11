@@ -1,6 +1,7 @@
 #include "Window.h"
 
 #include <stdio.h>
+#include <GL/glew.h>
 
 namespace te {
 
@@ -21,7 +22,6 @@ namespace te {
 	bool Window::show() {
 
 		sdlWnd = NULL;
-		sdlScreenSurface = NULL;
 
 		// Initialize SDL
 		if (SDL_Init(SDL_INIT_VIDEO) < 0)
@@ -35,22 +35,20 @@ namespace te {
 			"Thirds Engine | Version 1.0",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			w, h,
-			SDL_WINDOW_SHOWN);
+			SDL_WINDOW_OPENGL);
 
 		if (sdlWnd == NULL) {
 			fprintf(stderr, "Window could not be created! SDL_Error: %s\n", SDL_GetError());
 			return false;
 		}
 
-		// Get window surface
-		sdlScreenSurface = SDL_GetWindowSurface(sdlWnd);
-
 		return true;
 	}
 
 	void Window::render() {
 
-		SDL_FillRect(sdlScreenSurface, NULL, SDL_MapRGB(sdlScreenSurface->format, 0xFF, 0xFF, 0xFF));
-		SDL_UpdateWindowSurface(sdlWnd);
+		glClearColor(1.0, 0.0, 1.0, 1.0);
+		glClear(GL_COLOR_BUFFER_BIT);
+		SDL_GL_SwapWindow(sdlWnd);
 	}
 }
