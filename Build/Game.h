@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Renderable.h"
+#include "ThirdsMesh.h"
 
 class Game : public Renderable
 {
@@ -9,7 +10,10 @@ public:
 	~Game();
 
 	void input();
-	void render();
-	void update();
+	void update() override;
+	void render() override;
+
+private:
+	ThirdsMesh mesh;
 };
 

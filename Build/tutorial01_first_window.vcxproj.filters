@@ -19,6 +19,8 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="RenderUtil.cpp" />
+    <ClCompile Include="ThirdsVertex.cpp" />
+    <ClCompile Include="ThirdsMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -31,6 +33,8 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="RenderUtil.h" />
+    <ClInclude Include="ThirdsVertex.h" />
+    <ClInclude Include="ThirdsMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="ThirdsEngine.rc" />

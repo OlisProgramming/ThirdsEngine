@@ -14,6 +14,7 @@
 #include "Window.h"
 #include "Input.h"
 #include "Time.h"
+#include "ThirdsVertex.h"
 
 bool isRunning;
 
@@ -27,6 +28,7 @@ Game game = Game();
 Core::Core()
 {
 	isRunning = false;
+	printf("Vertex size: %i\n", sizeof ThirdsVertex);
 }
 
 Core::~Core()

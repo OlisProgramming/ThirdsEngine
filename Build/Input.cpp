@@ -85,7 +85,7 @@ vec2 Input::getMousePos()
 	double x = 0.0;
 	double y = 0.0;
 	glfwGetCursorPos(glfwWindow, &x, &y);
-	x = Util::clamp(x, 0, Window::getWidth()-1);
-	y = Util::clamp(y, 0, Window::getHeight()-1);
+	x = Util::clamp((float)x, 0.0f, (float)Window::getWidth()-1.0f);
+	y = Util::clamp((float)y, 0.0f, (float)Window::getHeight()-1.0f);
 	return vec2(x, y);
 }

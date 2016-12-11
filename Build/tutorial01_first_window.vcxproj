@@ -375,6 +375,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="RenderUtil.cpp" />
+    <ClCompile Include="ThirdsMesh.cpp" />
+    <ClCompile Include="ThirdsVertex.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Window.cpp" />
@@ -398,6 +400,8 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="ThirdsMesh.h" />
+    <ClInclude Include="ThirdsVertex.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Window.h" />
