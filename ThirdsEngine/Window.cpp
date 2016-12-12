@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <GL/glew.h>
 
+#define WINDOW_TITLE "Thirds Engine | Version 1.0"
+
 namespace te {
 
 	Window::Window(const int w, const int h) :
@@ -32,7 +34,7 @@ namespace te {
 		
 		// Create window
 		sdlWnd = SDL_CreateWindow(
-			"Thirds Engine | Version 1.0",
+			WINDOW_TITLE,
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			w, h,
 			SDL_WINDOW_OPENGL);

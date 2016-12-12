@@ -3,6 +3,11 @@
 #include <stdio.h>
 #include <GL/glew.h>
 
+#include "Time.h"
+
+#define FRAME_CAP (60.0)
+#define NANOS_PER_FRAME (16666667)
+
 namespace te {
 
 	GameManager* GameManager::manager = nullptr;
@@ -39,11 +44,21 @@ namespace te {
 		glewInit();
 
 		// BEGIN MAIN LOOP
-		
+
+		Timer timer;
+		int frames = 0;
+
 		while (running) {
-			
+
+			while (timer.nanos_elapsed() > NANOS_PER_FRAME) {
+				timer.add_nanos(NANOS_PER_FRAME);
+				// TIME DEPENDENT CODE
+				frames++;
+				if (frames % 60 == 0) printf("Next second");
+			}
+
+			// TIME INDEPENDENT CODE
 			handleEvents();
-			
 			render();
 		}
 		
