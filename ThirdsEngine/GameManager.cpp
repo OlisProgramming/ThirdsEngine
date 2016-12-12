@@ -46,19 +46,17 @@ namespace te {
 		// BEGIN MAIN LOOP
 
 		Timer timer;
-		int frames = 0;
 
 		while (running) {
 
 			while (timer.nanos_elapsed() > NANOS_PER_FRAME) {
 				timer.add_nanos(NANOS_PER_FRAME);
+
 				// TIME DEPENDENT CODE
-				frames++;
-				if (frames % 60 == 0) printf("Next second");
+				handleEvents();
 			}
 
 			// TIME INDEPENDENT CODE
-			handleEvents();
 			render();
 		}
 		
