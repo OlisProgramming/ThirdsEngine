@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include <SDL.h>
 
 #define KEY_A	SDL_SCANCODE_A
@@ -41,23 +40,31 @@
 #define KEY_8	SDL_SCANCODE_8
 #define KEY_9	SDL_SCANCODE_9
 
+#define MB_LEFT		SDL_BUTTON_LEFT
+#define MB_RIGHT	SDL_BUTTON_RIGHT
+#define MB_MIDDLE	SDL_BUTTON_MIDDLE
+
 namespace te {
 
 	typedef Uint8 Key;
+	typedef Uint8 MouseButton;
 
 	class EventHandler {
 	public:
 
 		EventHandler();
 		
-		// Virtual because the user should be
-		// able to decide what to do when a close
-		// is requested etc.
-		virtual void close();
+		void update();
+
+		void close();
 
 		bool getKey(Key keycode);
+		bool getMouse(MouseButton mb);
 
 	private:
-		const Uint8 *keyState;
+		const Uint8* keyState;
+		Uint32 mouseState;
+		int* mouse_x;
+		int* mouse_y;
 	};
 }

@@ -64,6 +64,7 @@ namespace te {
 	}
 
 	void GameManager::handleEvents() {
+		eventHandler->update();
 		SDL_Event e;
 		while (SDL_PollEvent(&e) != 0) {
 
