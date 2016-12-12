@@ -58,8 +58,10 @@ namespace te {
 
 		void close();
 
-		bool getKey(Key keycode);
-		bool getMouse(MouseButton mb);
+		bool getKey(const Key keycode) const;
+		bool getMouse(const MouseButton mb) const;
+		int getMouseX() const;
+		int getMouseY() const;
 
 	private:
 		const Uint8* keyState;
