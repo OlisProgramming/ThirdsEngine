@@ -4,6 +4,7 @@
 #include <GL/glew.h>
 
 #include "Time.h"
+#include "RenderUtil.h"
 
 #define FRAME_CAP (60.0)
 #define NANOS_PER_FRAME (16666667)
@@ -43,6 +44,8 @@ namespace te {
 		glewExperimental = GL_TRUE;
 		glewInit();
 
+		render::init();
+
 		// BEGIN MAIN LOOP
 
 		Timer timer;
@@ -77,6 +80,7 @@ namespace te {
 	}
 
 	void GameManager::render() {
+		render::clearScreen();
 		wnd->render();
 	}
 

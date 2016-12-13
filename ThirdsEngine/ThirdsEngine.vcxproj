@@ -119,12 +119,14 @@
     <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="RenderUtil.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Math.h" />
+    <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>

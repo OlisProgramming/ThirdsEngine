@@ -49,8 +49,6 @@ namespace te {
 
 	void Window::render() {
 
-		glClearColor(0.0, 0.0, 0.0, 1.0);
-		glClear(GL_COLOR_BUFFER_BIT);
 		SDL_GL_SwapWindow(sdlWnd);
 	}
 }
