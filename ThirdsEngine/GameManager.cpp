@@ -54,10 +54,10 @@ namespace te {
 
 				// TIME DEPENDENT CODE
 				handleEvents();
+				render();
 			}
 
-			// TIME INDEPENDENT CODE
-			render();
+			// TIME INDEPENDENT CODE (ASYNCHRONOUS)
 		}
 		
 		// END MAIN LOOP

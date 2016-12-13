@@ -2,6 +2,8 @@
 
 #include <SDL.h>
 
+#include "Math.h"
+
 #define KEY_A	SDL_SCANCODE_A
 #define KEY_B	SDL_SCANCODE_B
 #define KEY_C	SDL_SCANCODE_C
@@ -62,6 +64,7 @@ namespace te {
 		bool getMouse(const MouseButton mb) const;
 		int getMouseX() const;
 		int getMouseY() const;
+		Vec2 getMousePos() const;
 
 	private:
 		const Uint8* keyState;

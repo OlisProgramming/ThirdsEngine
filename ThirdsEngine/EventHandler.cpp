@@ -35,4 +35,11 @@ namespace te {
 	int EventHandler::getMouseY() const {
 		return *mouse_y;
 	}
+
+	Vec2 EventHandler::getMousePos() const {
+		Vec2 v;
+		v.x = float(getMouseX());
+		v.y = float(getMouseY());
+		return v;
+	}
 }

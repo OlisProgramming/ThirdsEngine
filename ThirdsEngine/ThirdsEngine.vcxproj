@@ -74,7 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>S:\GLEW\glew-2.0.0\include;S:\SDL\SDL 2.0 Dev\SDL2-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>S:\GLM\glm;S:\GLEW\glew-2.0.0\include;S:\SDL\SDL 2.0 Dev\SDL2-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>S:\GLEW\glew-2.0.0\lib\Release\Win32;S:\SDL\SDL 2.0 Dev\SDL2-2.0.4\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -124,6 +124,7 @@
   <ItemGroup>
     <ClInclude Include="EventHandler.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Math.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
