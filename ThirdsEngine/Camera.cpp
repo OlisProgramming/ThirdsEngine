@@ -16,6 +16,18 @@ namespace te {
 			printf("\n");
 		}
 
+		void Camera::rotatePitch(float angle) {
+			Vec3 axis = Nor(Cross(AxisY, front));
+			front = Rotate(front, angle, axis);
+			up = Cross(front, axis);
+		}
+
+		void Camera::rotateYaw(float angle) {
+			Vec3 axis = Nor(Cross(AxisY, front));
+			front = Rotate(front, angle, AxisY);
+			up = Cross(front, axis);
+		}
+
 		void Camera::updateMatrices() {
 			projMatrix = Mat4Project(80.0, 4.0 / 3.0, 0.1, 100.0);
 			viewMatrix = Mat4View(pos, pos+front, up);

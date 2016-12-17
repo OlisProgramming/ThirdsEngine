@@ -10,6 +10,10 @@ namespace te {
 			void updateMatrices();
 
 			void move(Vec3 dir, float distance);
+			// Rotates the camera by 'angle' radians on the X axis
+			void rotatePitch(float angle);
+			// Rotates the camera by 'angle' radians on the Y axis
+			void rotateYaw(float angle);
 
 			inline Vec3 getPos() const { return pos; }
 			inline void setPos(const Vec3& pos) { this->pos = pos; }

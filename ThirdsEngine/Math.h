@@ -3,10 +3,16 @@
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/rotate_vector.hpp>
+
+#define DegToRad(d)		glm::radians(d)
+#define RadToDeg(r)		glm::degrees(r)
 
 #define Cross(a, b)		glm::cross(a, b)
 #define Dot(a, b)		glm::dot(a, b)
 #define Nor(a)			glm::normalize(a)
+
+#define Rotate(v, theta, axis)	glm::rotate(v, theta, axis)
 
 #define Vec3Print(v)	printf("(%f, %f, %f)\n", v.x, v.y, v.z);
 
@@ -29,4 +35,8 @@ namespace te {
 	typedef glm::mat2 Mat2;
 	typedef glm::mat3 Mat3;
 	typedef glm::mat4 Mat4;
+
+	extern const Vec3 AxisX;
+	extern const Vec3 AxisY;
+	extern const Vec3 AxisZ;
 }

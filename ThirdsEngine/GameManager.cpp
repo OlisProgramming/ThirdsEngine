@@ -72,7 +72,7 @@ namespace te {
 			while (timer.nanos_elapsed() > NANOS_PER_FRAME) {
 				timer.add_nanos(NANOS_PER_FRAME);
 
-				cam.move(cam.getRight(), 0.01f);
+				cam.rotateRoll(0.01f);
 				cam.updateMatrices();
 
 				// TIME DEPENDENT CODE
