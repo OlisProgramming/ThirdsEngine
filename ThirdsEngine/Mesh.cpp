@@ -39,14 +39,13 @@ namespace te {
 				0,                  // stride
 				(void*)0            // array buffer offset
 			);
-			printf("");
 			glVertexAttribPointer(
 				1,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
 				2,                  // size
 				GL_FLOAT,           // type
 				GL_FALSE,           // normalized?
-				0,                  // stride
-				(void*)(3*sizeof(GLfloat))  // array buffer offset
+				(3 * sizeof(GLfloat)),  // stride
+				(void*)0			// array buffer offset
 			);
 
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
