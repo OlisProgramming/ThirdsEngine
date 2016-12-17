@@ -6,7 +6,7 @@ namespace te {
 	namespace render {
 
 		Mesh::Mesh() :
-			vbo(0) {}
+			vbo(0), modelMatrix(Mat4Identity()) {}
 
 		Mesh::~Mesh() {
 		}
@@ -28,7 +28,8 @@ namespace te {
 			glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
 		}
 
-		void Mesh::render() {
+		void Mesh::render(Camera& cam, GLuint matMVPID) {
+			glUniformMatrix4fv(matMVPID, 1, GL_FALSE, &Mat4ModelViewProject(modelMatrix, cam.getView(), cam.getProject())[0][0]);
 			glEnableVertexAttribArray(0);
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 			glVertexAttribPointer(

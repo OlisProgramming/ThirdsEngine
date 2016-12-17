@@ -24,7 +24,5 @@ namespace te {
 
 		SDL_Window* sdlWnd;
 		SDL_GLContext* glContext;
-
-		render::Mesh* mesh;
 	};
 }

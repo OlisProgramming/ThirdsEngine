@@ -4,6 +4,7 @@
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#define Mat4Identity()			te::Mat4(1.0f)
 #define Mat4Translate(vec3)		glm::translate(vec3)
 #define Mat4Scale(vec3)			glm::scale(vec3)
 #define Mat4ScaleUniform(s)		glm::scale(te::Vec3(s, s, s))
@@ -11,7 +12,7 @@
 #define Mat4Transform(translate, rotate, scale)		((translate) * (rotate) * (scale))
 
 #define Mat4View(camPos, target, up)				glm::lookAt(camPos, target, up)
-#define Mat4Project(fov, aspectRatio, nearZ, farZ)	glm::perspective(fov, aspectRatio, nearZ, farZ)
+#define Mat4Project(fov, aspectRatio, nearZ, farZ)	glm::perspective(glm::radians(fov), aspectRatio, nearZ, farZ)
 
 #define Mat4ModelViewProject(model, view, project)	((project) * (view) * (model))
 

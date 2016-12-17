@@ -8,7 +8,7 @@
 namespace te {
 
 	Window::Window(const int w, const int h) :
-		w(w), h(h), mesh(nullptr) {}
+		w(w), h(h) {}
 
 	Window::~Window() {
 		// Destroy window
@@ -45,13 +45,6 @@ namespace te {
 	}
 
 	void Window::render() {
-
-		if (mesh == nullptr) {
-			mesh = new render::Mesh();
-			mesh->setVertices(nullptr);
-		}
-
-		mesh->render();
 
 		SDL_GL_SwapWindow(sdlWnd);
 	}

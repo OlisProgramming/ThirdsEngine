@@ -2,6 +2,7 @@
 
 #include <GL/glew.h>
 
+#include "Camera.h"
 #include "EventHandler.h"
 #include "Window.h"
 
@@ -26,7 +27,7 @@ namespace te {
 		void handleEvents();
 
 		// Render the game. This runs as fast as possible.
-		void render(GLuint shader);
+		void render(GLuint shader, render::Camera& cam, GLuint matMVPID);
 
 		// Update the game. This runs at 60Hz.
 		void update();
@@ -34,5 +35,7 @@ namespace te {
 		Window* wnd;
 		EventHandler* eventHandler;
 		bool running;
+
+		render::Mesh* mesh;
 	};
 }
