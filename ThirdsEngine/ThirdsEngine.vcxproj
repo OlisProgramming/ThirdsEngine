@@ -122,7 +122,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Math.cpp" />
     <ClCompile Include="Mesh.cpp" />
+    <ClCompile Include="PhongShader.cpp" />
+    <ClCompile Include="RenderEngine.cpp" />
     <ClCompile Include="RenderUtil.cpp" />
+    <ClCompile Include="Shader.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +134,8 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Math.h" />
     <ClInclude Include="Mesh.h" />
+    <ClInclude Include="PhongShader.h" />
+    <ClInclude Include="RenderEngine.h" />
     <ClInclude Include="RenderUtil.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Shader.h" />

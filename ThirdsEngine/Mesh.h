@@ -14,11 +14,18 @@ namespace te {
 		public:
 			Mesh();
 			~Mesh();
+
+			inline Mat4& getModelMatrix() { return modelMatrix; }
+			inline GLuint getVbo() { return vbo; }
+			inline GLuint getIbo() { return ibo; }
+			inline int getTris() { return tris; }
+
+			inline void setTexture(GLuint tex) { this->tex = tex; }
+			inline GLuint getTexture() const { return tex; }
 			void setVertices(std::vector<GLfloat>* vertices, std::vector<unsigned short>* indices);
-			void render(Camera& cam, GLuint matMVPID);
 
 		private:
-			GLuint vbo, ibo;
+			GLuint vbo, ibo, tex;
 			int tris;
 			Mat4 modelMatrix;
 		};

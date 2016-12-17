@@ -5,6 +5,8 @@
 #include "Camera.h"
 #include "EventHandler.h"
 #include "Window.h"
+#include "Shader.h"
+#include "RenderEngine.h"
 
 namespace te {
 	class GameManager {
@@ -30,7 +32,7 @@ namespace te {
 		void handleCamera(render::Camera& cam);
 
 		// Render the game. This runs as fast as possible.
-		void render(GLuint shader, render::Camera& cam, GLuint matMVPID, GLuint tex);
+		void render(render::RenderEngine& renderEngine, render::Camera& cam);
 
 		// Update the game. This runs at 60Hz.
 		void update();

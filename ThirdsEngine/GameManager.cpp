@@ -5,8 +5,9 @@
 
 #include "Time.h"
 #include "RenderUtil.h"
-#include "Shader.h"
+#include "PhongShader.h"
 #include "ResourceManager.h"
+#include "RenderEngine.h"
 
 #define FRAME_CAP (60.0)
 #define NANOS_PER_FRAME (16666667)
@@ -56,12 +57,17 @@ namespace te {
 		glBindVertexArray(VertexArrayID);
 
 		render::init();
-		GLuint programID = render::loadShaders("shader_vert.glsl", "shader_frag.glsl");
+		
+		render::RenderEngine renderEngine;
+
+		render::PhongShader shader;
+		renderEngine.setShader(&shader);
+
 		render::Camera cam = render::Camera(Vec3(0, 0, 2), Vec3(0, 0, -2), Vec3(0, 1, 0));
-		GLuint matMVPID = glGetUniformLocation(programID, "MVP");
 
 		mesh = loadOBJ("suzanne");
-		GLuint tex = loadBMP("suzanne");
+		mesh->setTexture(loadBMP("suzanne"));
+		//GLuint tex = loadBMP("suzanne");
 
 		// BEGIN MAIN LOOP
 
@@ -76,7 +82,7 @@ namespace te {
 
 				// TIME DEPENDENT CODE
 				handleEvents();
-				render(programID, cam, matMVPID, tex);
+				render(renderEngine, cam);
 				
 			}
 
@@ -119,11 +125,12 @@ namespace te {
 		cam.updateMatrices();
 	}
 
-	void GameManager::render(GLuint shader, render::Camera& cam, GLuint matMVPID, GLuint tex) {
+	void GameManager::render(render::RenderEngine& renderEngine, render::Camera& cam) {
 		render::clearScreen();
-		glUseProgram(shader);
-		glBindTexture(GL_TEXTURE_2D, tex);
-		mesh->render(cam, matMVPID);
+
+		renderEngine.bindShader();
+		
+		renderEngine.renderMesh(*mesh, cam);
 
 		wnd->render();
 		

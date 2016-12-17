@@ -25,41 +25,5 @@ namespace te {
 
 			tris = indices->size();
 		}
-
-		void Mesh::render(Camera& cam, GLuint matMVPID) {
-			glUniformMatrix4fv(matMVPID, 1, GL_FALSE, &Mat4ModelViewProject(modelMatrix, cam.getView(), cam.getProject())[0][0]);
-			glEnableVertexAttribArray(0);
-			glEnableVertexAttribArray(1);
-			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-			glVertexAttribPointer(
-				0,                  // attribute 0.
-				3,                  // size
-				GL_FLOAT,           // type
-				GL_FALSE,           // normalized?
-				0,                  // stride
-				(void*)0            // array buffer offset
-			);
-			glVertexAttribPointer(
-				1,                  // attribute 1.
-				2,                  // size
-				GL_FLOAT,           // type
-				GL_FALSE,           // normalized?
-				(3 * sizeof(GLfloat)),  // stride
-				(void*)0			// array buffer offset
-			);
-
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-
-			// Draw the triangles !
-			glDrawElements(
-				GL_TRIANGLES,      // mode
-				3*tris,            // count
-				GL_UNSIGNED_SHORT, // type
-				(void*)0           // element array buffer offset
-			);
-
-			glDisableVertexAttribArray(0);
-			glDisableVertexAttribArray(1);
-		}
 	}
 }

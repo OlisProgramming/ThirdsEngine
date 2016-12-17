@@ -5,6 +5,8 @@
 #include <vector>
 #include <GL/glew.h>
 
+#include "Math.h"
+
 namespace te {
 	namespace render {
 		inline GLuint loadShaders(const char * vertex_file_path, const char * fragment_file_path) {
@@ -106,5 +108,20 @@ namespace te {
 
 			return ProgramID;
 		}
+
+		class Shader {
+
+		public:
+			Shader(std::string vert, std::string frag);
+			void bind();
+			GLuint getUniformID(const std::string& name) const;
+			void setUniform(GLuint id, const Mat4& val) const;
+
+			inline void setMVP(const Mat4& mat) { setUniform(idMVP, mat); }
+
+		private:
+			GLuint program;
+			GLuint idMVP;
+		};
 	}
 }
