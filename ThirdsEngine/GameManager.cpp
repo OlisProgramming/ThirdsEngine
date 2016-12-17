@@ -61,7 +61,7 @@ namespace te {
 		GLuint matMVPID = glGetUniformLocation(programID, "MVP");
 
 		mesh = loadOBJ("suzanne");
-		GLuint tex = loadPNG("suzanne");
+		GLuint tex = loadBMP("suzanne");
 
 		// BEGIN MAIN LOOP
 

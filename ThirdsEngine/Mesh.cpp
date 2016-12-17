@@ -32,7 +32,7 @@ namespace te {
 			glEnableVertexAttribArray(1);
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 			glVertexAttribPointer(
-				0,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
+				0,                  // attribute 0.
 				3,                  // size
 				GL_FLOAT,           // type
 				GL_FALSE,           // normalized?
@@ -40,7 +40,7 @@ namespace te {
 				(void*)0            // array buffer offset
 			);
 			glVertexAttribPointer(
-				1,                  // attribute 0. No particular reason for 0, but must match the layout in the shader.
+				1,                  // attribute 1.
 				2,                  // size
 				GL_FLOAT,           // type
 				GL_FALSE,           // normalized?

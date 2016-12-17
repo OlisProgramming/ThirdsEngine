@@ -6,7 +6,7 @@
 
 #include <GL/glew.h>
 
-#include "lodepng.h"
+#include "SOIL.h"
 
 #include "Math.h"
 #include "Mesh.h"
@@ -14,7 +14,7 @@
 #define MESH_DIR		"mesh/"
 #define	MESH_OBJ_EXT	".obj"
 #define IMG_DIR			"img/"
-#define IMG_PNG_EXT		".png"
+#define IMG_BMP_EXT		".bmp"
 
 namespace te {
 
@@ -23,26 +23,21 @@ namespace te {
 		std::ostringstream buf; std::ifstream input(path.c_str()); buf << input.rdbuf(); return buf.str();
 	}
 
-	inline GLuint loadPNG(std::string name) {
-		std::vector<unsigned char> image; //the raw pixels
-		unsigned width, height;
-		//decode
-		unsigned error = lodepng::decode(image, width, height, IMG_DIR + name + IMG_PNG_EXT);
+	inline GLuint loadBMP(std::string name) {
+		GLuint tex_2d = SOIL_load_OGL_texture
+		(
+			(IMG_DIR + name + IMG_BMP_EXT).c_str(),
+			SOIL_LOAD_AUTO,
+			SOIL_CREATE_NEW_ID,
+			SOIL_FLAG_INVERT_Y
+		);
 
-		// Create one OpenGL texture
-		GLuint textureID;
-		glGenTextures(1, &textureID);
+		// Typical Texture Generation Using Data From The Bitmap
+		glBindTexture(GL_TEXTURE_2D, tex_2d);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-		// "Bind" the newly created texture : all future texture functions will modify this texture
-		glBindTexture(GL_TEXTURE_2D, textureID);
-
-		// Give the image to OpenGL
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, &image[0]);
-
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-		return textureID;
+		return tex_2d;
 	}
 
 	inline std::vector<GLfloat>* vec3ToGLfloat(std::vector<Vec3>* vec3s) {
