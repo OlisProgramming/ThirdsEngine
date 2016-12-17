@@ -72,8 +72,7 @@ namespace te {
 			while (timer.nanos_elapsed() > NANOS_PER_FRAME) {
 				timer.add_nanos(NANOS_PER_FRAME);
 
-				cam.rotateRoll(0.01f);
-				cam.updateMatrices();
+				handleCamera(cam);
 
 				// TIME DEPENDENT CODE
 				handleEvents();
@@ -100,6 +99,24 @@ namespace te {
 				break;
 			}
 		}
+	}
+
+	void GameManager::handleCamera(render::Camera& cam) {
+
+		float distance = 0.01f;
+		float rotDistance = 0.01f;
+
+		if (eventHandler->getKey(KEY_W)) cam.move(cam.getFront(), distance);
+		if (eventHandler->getKey(KEY_S)) cam.move(cam.getFront(), -distance);
+		if (eventHandler->getKey(KEY_A)) cam.move(cam.getLeft(), distance);
+		if (eventHandler->getKey(KEY_D)) cam.move(cam.getRight(), distance);
+
+		if (eventHandler->getKey(KEY_UP)) cam.rotatePitch(-rotDistance);
+		if (eventHandler->getKey(KEY_DOWN)) cam.rotatePitch(rotDistance);
+		if (eventHandler->getKey(KEY_LEFT)) cam.rotateYaw(rotDistance);
+		if (eventHandler->getKey(KEY_RIGHT)) cam.rotateYaw(-rotDistance);
+
+		cam.updateMatrices();
 	}
 
 	void GameManager::render(GLuint shader, render::Camera& cam, GLuint matMVPID, GLuint tex) {

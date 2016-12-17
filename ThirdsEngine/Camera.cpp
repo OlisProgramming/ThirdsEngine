@@ -11,9 +11,6 @@ namespace te {
 
 		void Camera::move(Vec3 dir, float distance) {
 			pos += dir*distance;
-			Vec3Print(dir);
-			Vec3Print(pos);
-			printf("\n");
 		}
 
 		void Camera::rotatePitch(float angle) {

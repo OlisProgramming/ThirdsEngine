@@ -26,6 +26,9 @@ namespace te {
 		// Handle all events from SDL.
 		void handleEvents();
 
+		// Method for handling camera position.
+		void handleCamera(render::Camera& cam);
+
 		// Render the game. This runs as fast as possible.
 		void render(GLuint shader, render::Camera& cam, GLuint matMVPID, GLuint tex);
 
