@@ -8,8 +8,12 @@
 #define Mat4Scale(x, y, z)		glm::scale(x, y, z)
 #define Mat4ScaleUniform(s)		glm::scale(s, s, s)
 #define Mat4Rotate(theta, axis)	glm::rotate(theta, axis)
-
 #define Mat4Transform(translate, rotate, scale)		((translate) * (rotate) * (scale))
+
+#define Mat4View(camPos, target, up)				glm::lookAt(camPos, target, up)
+#define Mat4Project(fov, aspectRatio, nearZ, farZ)	glm::perspective(fov, aspectRatio, nearZ, farZ)
+
+#define Mat4ModelViewProject(model, view, project)	((project) * (view) * (model))
 
 namespace te {
 	typedef glm::vec2 Vec2;
