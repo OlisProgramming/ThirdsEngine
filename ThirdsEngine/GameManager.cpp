@@ -57,7 +57,7 @@ namespace te {
 
 		render::init();
 		GLuint programID = render::loadShaders("shader_vert.glsl", "shader_frag.glsl");
-		render::Camera cam = render::Camera(Vec3(1, 1, 2), Vec3(0, 0, 0), Vec3(0, 1, 0));
+		render::Camera cam = render::Camera(Vec3(0, 0, 2), Vec3(0, 0, -2), Vec3(0, 1, 0));
 		GLuint matMVPID = glGetUniformLocation(programID, "MVP");
 
 		mesh = loadOBJ("suzanne");
@@ -66,15 +66,13 @@ namespace te {
 		// BEGIN MAIN LOOP
 
 		Timer timer;
-		bool dir = true;
 
 		while (running) {
 
 			while (timer.nanos_elapsed() > NANOS_PER_FRAME) {
 				timer.add_nanos(NANOS_PER_FRAME);
 
-				if (cam.getPos().y > 3 || cam.getPos().y < -3) dir = !dir;
-				cam.move(Vec3(0, 1, 0), dir ? 0.01f : -0.01f);
+				cam.move(cam.getRight(), 0.01f);
 				cam.updateMatrices();
 
 				// TIME DEPENDENT CODE

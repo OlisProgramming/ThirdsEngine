@@ -6,6 +6,9 @@
 
 #define Cross(a, b)		glm::cross(a, b)
 #define Dot(a, b)		glm::dot(a, b)
+#define Nor(a)			glm::normalize(a)
+
+#define Vec3Print(v)	printf("(%f, %f, %f)\n", v.x, v.y, v.z);
 
 #define Mat4Identity()			te::Mat4(1.0f)
 #define Mat4Translate(vec3)		glm::translate(vec3)
