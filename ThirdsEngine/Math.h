@@ -4,9 +4,9 @@
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#define Mat4Translate(x, y, z)	glm::translate(x, y, z)
-#define Mat4Scale(x, y, z)		glm::scale(x, y, z)
-#define Mat4ScaleUniform(s)		glm::scale(s, s, s)
+#define Mat4Translate(vec3)		glm::translate(vec3)
+#define Mat4Scale(vec3)			glm::scale(vec3)
+#define Mat4ScaleUniform(s)		glm::scale(te::Vec3(s, s, s))
 #define Mat4Rotate(theta, axis)	glm::rotate(theta, axis)
 #define Mat4Transform(translate, rotate, scale)		((translate) * (rotate) * (scale))
 
