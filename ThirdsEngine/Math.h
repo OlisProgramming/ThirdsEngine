@@ -4,6 +4,9 @@
 #include <glm/gtx/transform.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#define Cross(a, b)		glm::cross(a, b)
+#define Dot(a, b)		glm::dot(a, b)
+
 #define Mat4Identity()			te::Mat4(1.0f)
 #define Mat4Translate(vec3)		glm::translate(vec3)
 #define Mat4Scale(vec3)			glm::scale(vec3)

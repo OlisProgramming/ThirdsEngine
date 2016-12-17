@@ -9,6 +9,8 @@ namespace te {
 			Camera(Vec3 pos, Vec3 target, Vec3 up);
 			void updateMatrices();
 
+			void move(Vec3 dir, float distance);
+
 			inline Vec3 getPos() const { return pos; }
 			inline void setPos(const Vec3& pos) { this->pos = pos; }
 
