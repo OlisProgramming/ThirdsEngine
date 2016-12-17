@@ -10,6 +10,11 @@ namespace te {
 
 		public:
 			PhongShader();
+
+			inline void setLightAmbient(const Vec3& light) { setUniform(idLightAmbient, light); }
+
+		private:
+			GLuint idLightAmbient;
 		};
 	}
 }

@@ -1,9 +1,16 @@
 #include "RenderEngine.h"
 
+#include "PhongShader.h"
+
 namespace te {
 	namespace render {
 
 		RenderEngine::RenderEngine() {}
+
+		void RenderEngine::bindShader() {
+			shader->bind();
+			(static_cast<PhongShader*>(shader))->setLightAmbient(Vec3(0.1, 0.1, 0.1));
+		}
 
 		void RenderEngine::renderMesh(Mesh& mesh, const Camera& cam) const {
 

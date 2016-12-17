@@ -19,5 +19,9 @@ namespace te {
 		void Shader::setUniform(GLuint id, const Mat4& val) const {
 			glUniformMatrix4fv(id, 1, GL_FALSE, &val[0][0]);
 		}
+
+		void Shader::setUniform(GLuint id, const Vec3& val) const {
+			glUniform3fv(id, 1, &val[0]);
+		}
 	}
 }

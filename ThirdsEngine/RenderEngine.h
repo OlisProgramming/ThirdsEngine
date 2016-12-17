@@ -13,7 +13,7 @@ namespace te {
 			RenderEngine();
 
 			inline void setShader(Shader* shader) { this->shader = shader; }
-			inline void bindShader() { shader->bind(); }
+			void bindShader();
 
 			void renderMesh(Mesh& mesh, const Camera& cam) const;
 

@@ -116,6 +116,7 @@ namespace te {
 			void bind();
 			GLuint getUniformID(const std::string& name) const;
 			void setUniform(GLuint id, const Mat4& val) const;
+			void setUniform(GLuint id, const Vec3& val) const;
 
 			inline void setMVP(const Mat4& mat) { setUniform(idMVP, mat); }
 
