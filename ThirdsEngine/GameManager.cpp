@@ -59,8 +59,18 @@ namespace te {
 		render::Camera cam = render::Camera(Vec3(4, 3, 3), Vec3(0, 0, 0), Vec3(0, 1, 0));
 		GLuint matMVPID = glGetUniformLocation(programID, "MVP");
 
-		mesh = new render::Mesh();
-		mesh->setVertices(nullptr);
+		{  // Create mesh
+			mesh = new render::Mesh();
+			std::vector<GLfloat> vertices = {
+				1.0f, -1.0f, 0.0f,
+				-1.0f, -1.0f, 0.0f,
+				0.0f,  1.0f, 0.0f,
+			};
+			std::vector<unsigned short> indices = {
+				0, 1, 2,
+			};
+			mesh->setVertices(&vertices, &indices);
+		}
 
 		// BEGIN MAIN LOOP
 

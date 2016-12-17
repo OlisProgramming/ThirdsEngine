@@ -1,9 +1,10 @@
 #pragma once
 
+#include <vector>
+
 #include <GL/glew.h>
 
 #include "Camera.h"
-#include "Vertex.h"
 #include "Math.h"
 
 namespace te {
@@ -13,11 +14,11 @@ namespace te {
 		public:
 			Mesh();
 			~Mesh();
-			void setVertices(Vertex vertices[]);
+			void setVertices(std::vector<GLfloat>* vertices, std::vector<unsigned short>* indices);
 			void render(Camera& cam, GLuint matMVPID);
 
 		private:
-			GLuint vbo;
+			GLuint vbo, ebo;
 			Mat4 modelMatrix;
 		};
 	}

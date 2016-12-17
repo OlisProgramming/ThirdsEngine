@@ -6,26 +6,22 @@ namespace te {
 	namespace render {
 
 		Mesh::Mesh() :
-			vbo(0), modelMatrix(Mat4Identity()) {}
+			vbo(0), ebo(0), modelMatrix(Mat4Identity()) {}
 
 		Mesh::~Mesh() {
 		}
 
-		void Mesh::setVertices(Vertex vertices[]) {
-			GLfloat g_vertex_buffer_data[] = {
-				1.0f, -1.0f, 0.0f,
-				-1.0f, -1.0f, 0.0f,
-				0.0f,  1.0f, 0.0f,
-			};
+		void Mesh::setVertices(std::vector<GLfloat>* vertices, std::vector<unsigned short>* indices) {
 
 			vbo = 0;
-			if (!glGenBuffers) { printf("uh oh"); return; }
-			// Generate 1 buffer, put the resulting identifier in vertexbuffer
 			glGenBuffers(1, &vbo);
-			// The following commands will talk about our 'vertexbuffer' buffer
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
-			// Give our vertices to OpenGL.
-			glBufferData(GL_ARRAY_BUFFER, sizeof(g_vertex_buffer_data), g_vertex_buffer_data, GL_STATIC_DRAW);
+			glBufferData(GL_ARRAY_BUFFER, vertices->size() * sizeof(GLfloat), &(*vertices)[0], GL_STATIC_DRAW);
+
+			ebo = 0;
+			glGenBuffers(1, &ebo);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices->size() * sizeof(unsigned short), &(*indices)[0], GL_STATIC_DRAW);
 		}
 
 		void Mesh::render(Camera& cam, GLuint matMVPID) {
@@ -40,8 +36,17 @@ namespace te {
 				0,                  // stride
 				(void*)0            // array buffer offset
 			);
-			// Draw the triangle !
-			glDrawArrays(GL_TRIANGLES, 0, 3); // Starting from vertex 0; 3 vertices total -> 1 triangle
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+
+			// Draw the triangles !
+			glDrawElements(
+				GL_TRIANGLES,      // mode
+				3,                 // count
+				GL_UNSIGNED_SHORT, // type
+				(void*)0           // element array buffer offset
+			);
+
 			glDisableVertexAttribArray(0);
 		}
 	}
