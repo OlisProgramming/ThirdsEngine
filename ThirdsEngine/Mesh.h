@@ -18,7 +18,7 @@ namespace te {
 			void render(Camera& cam, GLuint matMVPID);
 
 		private:
-			GLuint vbo, ebo;
+			GLuint vbo, ibo;
 			Mat4 modelMatrix;
 		};
 	}

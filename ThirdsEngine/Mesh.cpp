@@ -6,7 +6,7 @@ namespace te {
 	namespace render {
 
 		Mesh::Mesh() :
-			vbo(0), ebo(0), modelMatrix(Mat4Identity()) {}
+			vbo(0), ibo(0), modelMatrix(Mat4Identity()) {}
 
 		Mesh::~Mesh() {
 		}
@@ -18,9 +18,9 @@ namespace te {
 			glBindBuffer(GL_ARRAY_BUFFER, vbo);
 			glBufferData(GL_ARRAY_BUFFER, vertices->size() * sizeof(GLfloat), &(*vertices)[0], GL_STATIC_DRAW);
 
-			ebo = 0;
-			glGenBuffers(1, &ebo);
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+			ibo = 0;
+			glGenBuffers(1, &ibo);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices->size() * sizeof(unsigned short), &(*indices)[0], GL_STATIC_DRAW);
 		}
 
@@ -37,7 +37,7 @@ namespace te {
 				(void*)0            // array buffer offset
 			);
 
-			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 
 			// Draw the triangles !
 			glDrawElements(
