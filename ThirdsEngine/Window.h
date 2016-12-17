@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SDL.h>
+#include "Mesh.h"
 
 namespace te {
 	class Window {
@@ -23,5 +24,7 @@ namespace te {
 
 		SDL_Window* sdlWnd;
 		SDL_GLContext* glContext;
+
+		render::Mesh* mesh;
 	};
 }

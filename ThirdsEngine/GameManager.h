@@ -1,5 +1,7 @@
 #pragma once
 
+#include <GL/glew.h>
+
 #include "EventHandler.h"
 #include "Window.h"
 
@@ -24,7 +26,7 @@ namespace te {
 		void handleEvents();
 
 		// Render the game. This runs as fast as possible.
-		void render();
+		void render(GLuint shader);
 
 		// Update the game. This runs at 60Hz.
 		void update();

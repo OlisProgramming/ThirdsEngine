@@ -8,12 +8,9 @@
 namespace te {
 
 	Window::Window(const int w, const int h) :
-		w(w), h(h) {}
+		w(w), h(h), mesh(nullptr) {}
 
 	Window::~Window() {
-		// Wait two seconds
-		SDL_Delay(2000);
-
 		// Destroy window
 		SDL_DestroyWindow(sdlWnd);
 
@@ -48,6 +45,13 @@ namespace te {
 	}
 
 	void Window::render() {
+
+		if (mesh == nullptr) {
+			mesh = new render::Mesh();
+			mesh->setVertices(nullptr);
+		}
+
+		mesh->render();
 
 		SDL_GL_SwapWindow(sdlWnd);
 	}

@@ -5,6 +5,7 @@
 
 #include "Time.h"
 #include "RenderUtil.h"
+#include "Shader.h"
 
 #define FRAME_CAP (60.0)
 #define NANOS_PER_FRAME (16666667)
@@ -30,21 +31,31 @@ namespace te {
 			return;
 		}
 
-		if (!wnd->show()) return;
+		//if (!wnd->show()) return;
 
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
 		SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 2);
 		SDL_GL_SetAttribute(SDL_GL_DOUBLEBUFFER, 1);
 
+		if (!wnd->show()) return;
+
 		// Because this does not return a pointer, the GL Context must be created here
 		SDL_GLContext glContext = SDL_GL_CreateContext(wnd->getSdlWnd());
 		wnd->setGlContext(&glContext);
 
 		glewExperimental = GL_TRUE;
-		glewInit();
+		if (glewInit() != GLEW_OK) {
+			printf("GLEW could not initialise.");
+			return;
+		}
+
+		GLuint VertexArrayID;
+		glGenVertexArrays(1, &VertexArrayID);
+		glBindVertexArray(VertexArrayID);
 
 		render::init();
+		GLuint programID = render::loadShaders("shader_vert.glsl", "shader_frag.glsl");
 
 		// BEGIN MAIN LOOP
 
@@ -57,7 +68,8 @@ namespace te {
 
 				// TIME DEPENDENT CODE
 				handleEvents();
-				render();
+				render(programID);
+				
 			}
 
 			// TIME INDEPENDENT CODE (ASYNCHRONOUS)
@@ -79,8 +91,9 @@ namespace te {
 		}
 	}
 
-	void GameManager::render() {
+	void GameManager::render(GLuint shader) {
 		render::clearScreen();
+		glUseProgram(shader);
 		wnd->render();
 	}
 
