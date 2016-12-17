@@ -22,6 +22,8 @@ namespace te {
 			glGenBuffers(1, &ibo);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices->size() * sizeof(unsigned short), &(*indices)[0], GL_STATIC_DRAW);
+
+			tris = indices->size();
 		}
 
 		void Mesh::render(Camera& cam, GLuint matMVPID) {
@@ -42,7 +44,7 @@ namespace te {
 			// Draw the triangles !
 			glDrawElements(
 				GL_TRIANGLES,      // mode
-				3,                 // count
+				tris,              // count
 				GL_UNSIGNED_SHORT, // type
 				(void*)0           // element array buffer offset
 			);

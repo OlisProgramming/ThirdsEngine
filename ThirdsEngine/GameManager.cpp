@@ -6,6 +6,7 @@
 #include "Time.h"
 #include "RenderUtil.h"
 #include "Shader.h"
+#include "ResourceManager.h"
 
 #define FRAME_CAP (60.0)
 #define NANOS_PER_FRAME (16666667)
@@ -59,7 +60,7 @@ namespace te {
 		render::Camera cam = render::Camera(Vec3(4, 3, 3), Vec3(0, 0, 0), Vec3(0, 1, 0));
 		GLuint matMVPID = glGetUniformLocation(programID, "MVP");
 
-		{  // Create mesh
+		if (0) {  // Create mesh
 			mesh = new render::Mesh();
 			std::vector<GLfloat> vertices = {
 				1.0f, -1.0f, 0.0f,
@@ -71,6 +72,8 @@ namespace te {
 			};
 			mesh->setVertices(&vertices, &indices);
 		}
+
+		mesh = loadOBJ("suzanne");
 
 		// BEGIN MAIN LOOP
 

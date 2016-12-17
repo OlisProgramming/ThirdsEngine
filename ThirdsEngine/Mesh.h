@@ -19,6 +19,7 @@ namespace te {
 
 		private:
 			GLuint vbo, ibo;
+			int tris;
 			Mat4 modelMatrix;
 		};
 	}
