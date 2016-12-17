@@ -4,14 +4,45 @@
 #include <vector>
 #include <string>
 
+#include <GL/glew.h>
+
+#include "lodepng.h"
+
 #include "Math.h"
 #include "Mesh.h"
+
+#define MESH_DIR		"mesh/"
+#define	MESH_OBJ_EXT	".obj"
+#define IMG_DIR			"img/"
+#define IMG_PNG_EXT		".png"
 
 namespace te {
 
 	/** Read file into string. */
 	inline std::string readFile(const std::string& path) {
 		std::ostringstream buf; std::ifstream input(path.c_str()); buf << input.rdbuf(); return buf.str();
+	}
+
+	inline GLuint loadPNG(std::string name) {
+		std::vector<unsigned char> image; //the raw pixels
+		unsigned width, height;
+		//decode
+		unsigned error = lodepng::decode(image, width, height, IMG_DIR + name + IMG_PNG_EXT);
+
+		// Create one OpenGL texture
+		GLuint textureID;
+		glGenTextures(1, &textureID);
+
+		// "Bind" the newly created texture : all future texture functions will modify this texture
+		glBindTexture(GL_TEXTURE_2D, textureID);
+
+		// Give the image to OpenGL
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, &image[0]);
+
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+		return textureID;
 	}
 
 	inline std::vector<GLfloat>* vec3ToGLfloat(std::vector<Vec3>* vec3s) {
@@ -31,7 +62,7 @@ namespace te {
 		std::vector<Vec3> temp_normals;
 
 		std::ifstream file;
-		file.open("mesh/" + name + ".obj");
+		file.open(MESH_DIR + name + MESH_OBJ_EXT);
 		std::string line;
 		while (std::getline(file, line)) {
 			if (line.substr(0, 2) == "v ") {
@@ -53,26 +84,18 @@ namespace te {
 				temp_uvs.push_back(normal);
 			}
 			else if (line.substr(0, 2) == "f ") {
-				printf("face\n");
 				unsigned short vIndex[3], vnIndex[3], vtIndex[3];
 				std::string a, b, c;
 				std::istringstream iss(line.substr(2, line.length() - 2));
 				if (!(iss >> a >> b >> c)) { break; }
 
-				printf("%s, %s, %s\n", a.c_str(), b.c_str(), c.c_str());
-
 				char c1, c2, c3, c4, c5, c6;
-				printf("2");
 				std::istringstream issA(a);
 				if (!(issA >> vIndex[0] >> c1 >> vtIndex[0] >> c2 >> vnIndex[0])) { break; }
-				printf("3");
 				std::istringstream issB(b);
-				if (!(issB >> vIndex[1] >> c3 >> vtIndex[1] >> c4 >> vnIndex[1])) { printf("err2"); break; }
-				printf("4");
+				if (!(issB >> vIndex[1] >> c3 >> vtIndex[1] >> c4 >> vnIndex[1])) { break; }
 				std::istringstream issC(c);
 				if (!(issC >> vIndex[2] >> c5 >> vtIndex[2] >> c6 >> vnIndex[2])) { break; }
-
-				printf("...");
 
 				vertexIndices.push_back(vIndex[0]);
 				vertexIndices.push_back(vIndex[1]);
@@ -83,8 +106,6 @@ namespace te {
 				normalIndices.push_back(vnIndex[0]);
 				normalIndices.push_back(vnIndex[1]);
 				normalIndices.push_back(vnIndex[2]);
-
-				printf("done face\n");
 			}
 		}
 

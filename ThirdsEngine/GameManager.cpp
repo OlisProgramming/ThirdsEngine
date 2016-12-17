@@ -57,23 +57,11 @@ namespace te {
 
 		render::init();
 		GLuint programID = render::loadShaders("shader_vert.glsl", "shader_frag.glsl");
-		render::Camera cam = render::Camera(Vec3(4, 3, 3), Vec3(0, 0, 0), Vec3(0, 1, 0));
+		render::Camera cam = render::Camera(Vec3(1, 1, 2), Vec3(0, 0, 0), Vec3(0, 1, 0));
 		GLuint matMVPID = glGetUniformLocation(programID, "MVP");
 
-		if (0) {  // Create mesh
-			mesh = new render::Mesh();
-			std::vector<GLfloat> vertices = {
-				1.0f, -1.0f, 0.0f,
-				-1.0f, -1.0f, 0.0f,
-				0.0f,  1.0f, 0.0f,
-			};
-			std::vector<unsigned short> indices = {
-				0, 1, 2,
-			};
-			mesh->setVertices(&vertices, &indices);
-		}
-
 		mesh = loadOBJ("suzanne");
+		GLuint tex = loadPNG("suzanne");
 
 		// BEGIN MAIN LOOP
 
@@ -86,7 +74,7 @@ namespace te {
 
 				// TIME DEPENDENT CODE
 				handleEvents();
-				render(programID, cam, matMVPID);
+				render(programID, cam, matMVPID, tex);
 				
 			}
 
@@ -111,10 +99,10 @@ namespace te {
 		}
 	}
 
-	void GameManager::render(GLuint shader, render::Camera& cam, GLuint matMVPID) {
+	void GameManager::render(GLuint shader, render::Camera& cam, GLuint matMVPID, GLuint tex) {
 		render::clearScreen();
 		glUseProgram(shader);
-
+		glBindTexture(GL_TEXTURE_2D, tex);
 		mesh->render(cam, matMVPID);
 
 		wnd->render();

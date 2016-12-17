@@ -27,7 +27,7 @@ namespace te {
 		void handleEvents();
 
 		// Render the game. This runs as fast as possible.
-		void render(GLuint shader, render::Camera& cam, GLuint matMVPID);
+		void render(GLuint shader, render::Camera& cam, GLuint matMVPID, GLuint tex);
 
 		// Update the game. This runs at 60Hz.
 		void update();
