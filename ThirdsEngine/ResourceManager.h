@@ -97,15 +97,15 @@ namespace te {
 				std::istringstream issC(c);
 				if (!(issC >> vIndex[2] >> c5 >> vtIndex[2] >> c6 >> vnIndex[2])) { break; }
 
-				vertexIndices.push_back(vIndex[0]);
-				vertexIndices.push_back(vIndex[1]);
-				vertexIndices.push_back(vIndex[2]);
-				uvIndices.push_back(vtIndex[0]);
-				uvIndices.push_back(vtIndex[1]);
-				uvIndices.push_back(vtIndex[2]);
-				normalIndices.push_back(vnIndex[0]);
-				normalIndices.push_back(vnIndex[1]);
-				normalIndices.push_back(vnIndex[2]);
+				vertexIndices.push_back(vIndex[0] - 1);
+				vertexIndices.push_back(vIndex[1] - 1);
+				vertexIndices.push_back(vIndex[2] - 1);
+				uvIndices.push_back(vtIndex[0] - 1);
+				uvIndices.push_back(vtIndex[1] - 1);
+				uvIndices.push_back(vtIndex[2] - 1);
+				normalIndices.push_back(vnIndex[0] - 1);
+				normalIndices.push_back(vnIndex[1] - 1);
+				normalIndices.push_back(vnIndex[2] - 1);
 			}
 		}
 
