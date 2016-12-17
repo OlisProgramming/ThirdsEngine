@@ -103,8 +103,8 @@ namespace te {
 
 	void GameManager::handleCamera(render::Camera& cam) {
 
-		float distance = 0.01f;
-		float rotDistance = 0.01f;
+		float distance = 0.05f;
+		float rotDistance = 0.015f;
 
 		if (eventHandler->getKey(KEY_W)) cam.move(cam.getFront(), distance);
 		if (eventHandler->getKey(KEY_S)) cam.move(cam.getFront(), -distance);
